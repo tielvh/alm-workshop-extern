@@ -198,6 +198,8 @@ The next step is to now improve upon this, so that you as a developer can focus 
     |── /workflows
         └── ci.yaml
 |── /docs
+|── /infra
+    └── openshift.yaml
 |── /workshop-service
     ├── main.go
     |── workshop.go

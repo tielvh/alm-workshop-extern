@@ -4,23 +4,22 @@
 {
   "name": "ALM Workshop",
   // Use Debian based base image to support Golang feature
-  "image": "craealmworkshop.azurecr.io/alm-workshop-base/devcontainer:1.1.0",
-  "remoteUser": "devuser"
-  // "customizations": {
-  //   "vscode": {
+  "image": "craealmworkshop.azurecr.io/alm-workshop-base/devcontainer:1.2.0",
+  "customizations": {
+    "vscode": {
       // Open in VSCode by pressing together "CTRL + SHIFT + P" & Type "Open Remote Preferences (JSON)"
-      // "settings": {
-      //   "editor.formatOnSave": true,
-      //   "editor.codeActions.triggerOnFocusChange": true,
-      //   "editor.fontSize": 12,
-      //   "editor.wordWrap": "on",
-      //   "editor.tabSize": 2,
-      //   "editor.insertSpaces": true,
-      //   "files.trimTrailingWhitespace": true,
-      //   "files.autoSave": "onFocusChange",
-      //   "explorer.confirmDelete": false,
-      //   "git.autofetch": true
-      // }
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.codeActions.triggerOnFocusChange": true,
+        "editor.fontSize": 12,
+        "editor.wordWrap": "on",
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "files.trimTrailingWhitespace": true,
+        "files.autoSave": "onFocusChange",
+        "explorer.confirmDelete": false,
+        "git.autofetch": true
+      }
       // Automatically proposes extensions to install inside VSCode
       // "extensions": [
       //   "redhat.vscode-yaml",
@@ -29,8 +28,8 @@
 			// 	"golang.go",
 			// 	"premparihar.gotestexplorer"
       // ]
-  //   }
-  // }
+    }
+  }
   // Features are automatically installed when container is created https://containers.dev/features
   // "features": {
   //   "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},

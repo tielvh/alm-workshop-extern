@@ -34,25 +34,11 @@ ENV GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
 # Install VSCode extensions in correct directories
-RUN mkdir -p /root/.vscode-server/extensions && \
-    mkdir -p /root/.vscode-server-insiders/extensions && \
-    mkdir -p /root/.vscode/extensions && \
-    code --install-extension redhat.vscode-yaml && \
+RUN code --install-extension redhat.vscode-yaml && \
     code --install-extension eamodio.gitlens && \
     code --install-extension 766b.go-outliner && \
     code --install-extension golang.go && \
     code --install-extension premparihar.gotestexplorer || true
-
-# Set permissions for VSCode extensions
-RUN chmod -R 777 /root/.vscode-server /root/.vscode-server-insiders /root/.vscode
-
-# Create a non-root user for Codespaces
-RUN useradd -m -s /bin/bash devuser && \
-    usermod -aG sudo,docker devuser && \
-    echo 'devuser ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/devuser
-
-# Set non-root user as default
-USER devuser
 
 # Default shell
 CMD ["bash"]
