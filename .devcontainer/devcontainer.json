@@ -2,9 +2,9 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/alpine
 // This file is used as configuration file for the devcontainer specification and indicates what actions should be taken for the development environment
 {
-  "name": "OpenShift + Go + Docker DevContainer",
+  "name": "ALM Workshop",
   // Use Debian based base image to support Golang feature
-  "image": "mcr.microsoft.com/devcontainers/base:bookworm",
+  "image": "craealmworkshop.azurecr.io/alm-workshop-base/devcontainer:1.0.0",
   "customizations": {
     "vscode": {
       // Open in VSCode by pressing together "CTRL + SHIFT + P" & Type "Open Remote Preferences (JSON)"
@@ -19,27 +19,27 @@
         "files.autoSave": "onFocusChange",
         "explorer.confirmDelete": false,
         "git.autofetch": true
-      },
+      }
       // Automatically proposes extensions to install inside VSCode
-      "extensions": [
-        "redhat.vscode-yaml",
-        "eamodio.gitlens",
-        "766b.go-outliner",
-				"golang.go",
-				"premparihar.gotestexplorer"
-      ]
+      // "extensions": [
+      //   "redhat.vscode-yaml",
+      //   "eamodio.gitlens",
+      //   "766b.go-outliner",
+			// 	"golang.go",
+			// 	"premparihar.gotestexplorer"
+      // ]
     }
   },
   // Features are automatically installed when container is created https://containers.dev/features
   "features": {
-    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
-    "ghcr.io/devcontainers/features/go:1": {
-			"version": "1.23"
-		}
-  },
+  //   "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
+  //   "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+  //   "ghcr.io/devcontainers/features/go:1": {
+	// 		"version": "1.23"
+	// 	}
+  }
   // Post-create command to install OpenShift CLI
   // Because the openshift-cli feature does not work
   // Will only work on x86_64 architectures at the moment... Use this URL if you're running devcontainer locally on Mac https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux-arm64.tar.gz
-  "postCreateCommand": "curl -L https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz | tar -xz -C /tmp && sudo mv /tmp/oc /usr/local/bin && sudo chmod +x /usr/local/bin/oc"
+  // "postCreateCommand": "curl -L https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz | tar -xz -C /tmp && sudo mv /tmp/oc /usr/local/bin && sudo chmod +x /usr/local/bin/oc"
 }
