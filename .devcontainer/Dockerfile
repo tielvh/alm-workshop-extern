@@ -7,14 +7,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 # Install required dependencies
 RUN apt-get update && apt-get install -y \
     curl wget git sudo unzip tar bash-completion \
-    ca-certificates lsb-release jq iproute2 \
+    ca-certificates lsb-release jq iproute2 docker.io \
     && rm -rf /var/lib/apt/lists/*
 
 # Install OpenShift CLI (oc)
 RUN curl -L https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-linux.tar.gz | \
     tar -xz -C /usr/local/bin && chmod +x /usr/local/bin/oc
 
-# Install Go (skip if using feature)
+# Install Go (latest stable)
 RUN curl -fsSL https://golang.org/dl/go1.23.6.linux-amd64.tar.gz | \
     tar -C /usr/local -xz && ln -s /usr/local/go/bin/go /usr/local/bin/go
 
@@ -33,16 +33,26 @@ RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/mi
 ENV GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
-# Pre-install VSCode extensions (to skip downloading them at startup)
+# Install VSCode extensions in correct directories
 RUN mkdir -p /root/.vscode-server/extensions && \
+    mkdir -p /root/.vscode-server-insiders/extensions && \
+    mkdir -p /root/.vscode/extensions && \
     code --install-extension redhat.vscode-yaml && \
     code --install-extension eamodio.gitlens && \
     code --install-extension 766b.go-outliner && \
     code --install-extension golang.go && \
     code --install-extension premparihar.gotestexplorer || true
 
-# Set permissions (for non-root users in Codespaces)
-RUN chmod -R 777 /root/.vscode-server/extensions
+# Set permissions for VSCode extensions
+RUN chmod -R 777 /root/.vscode-server /root/.vscode-server-insiders /root/.vscode
+
+# Create a non-root user for Codespaces
+RUN useradd -m -s /bin/bash devuser && \
+    usermod -aG sudo,docker devuser && \
+    echo 'devuser ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/devuser
+
+# Set non-root user as default
+USER devuser
 
 # Default shell
-CMD [ "bash" ]
+CMD ["bash"]
