@@ -33,12 +33,5 @@ RUN curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/mi
 ENV GOPATH=/go
 ENV PATH=$GOPATH/bin:/usr/local/go/bin:$PATH
 
-# Install VSCode extensions in correct directories
-RUN code --install-extension redhat.vscode-yaml && \
-    code --install-extension eamodio.gitlens && \
-    code --install-extension 766b.go-outliner && \
-    code --install-extension golang.go && \
-    code --install-extension premparihar.gotestexplorer || true
-
 # Default shell
 CMD ["bash"]

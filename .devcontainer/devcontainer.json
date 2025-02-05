@@ -4,7 +4,7 @@
 {
   "name": "ALM Workshop",
   // Use Debian based base image to support Golang feature
-  "image": "craealmworkshop.azurecr.io/alm-workshop-base/devcontainer:1.2.0",
+  "image": "craealmworkshop.azurecr.io/alm-workshop-base/devcontainer:1.3.0",
   "customizations": {
     "vscode": {
       // Open in VSCode by pressing together "CTRL + SHIFT + P" & Type "Open Remote Preferences (JSON)"
@@ -19,15 +19,15 @@
         "files.autoSave": "onFocusChange",
         "explorer.confirmDelete": false,
         "git.autofetch": true
-      }
+      },
       // Automatically proposes extensions to install inside VSCode
-      // "extensions": [
-      //   "redhat.vscode-yaml",
-      //   "eamodio.gitlens",
-      //   "766b.go-outliner",
-			// 	"golang.go",
-			// 	"premparihar.gotestexplorer"
-      // ]
+      "extensions": [
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "766b.go-outliner",
+				"golang.go",
+				"premparihar.gotestexplorer"
+      ]
     }
   }
   // Features are automatically installed when container is created https://containers.dev/features
