@@ -140,24 +140,25 @@ We'll use **Infrastructure as Code (IaC)** to automate OpenShift deployments.
 
     ![Delete application](docs/openshift-delete-app.png)
 
-2. Read the openshift.yaml to understand the Kubernetes resources and what they do.
-3. Modify `openshift.yaml` to use your Quay.io image.
-4. Login to the cluster from a CLI by copying the **Login Command**
+2. Create a new branch `dev` from `main`.
+3. Read the openshift.yaml to understand the Kubernetes resources and what they do.
+4. Modify `openshift.yaml` to use your Quay.io image.
+5. Login to the cluster from a CLI by copying the **Login Command**
    
     ![OpenShift Login command](docs/openshift-login-command.png)
 
-5. You should now be able to do several commands using the OpenShift CLI:
+6. You should now be able to do several commands using the OpenShift CLI:
    * `oc get pods` to see your pods that are running
    * `oc get deployments` will show you the deployment resource that OpenShift created for us in the previous step
    * `oc get svc` will show the services
    * `oc get routes` will show the routes & the urls from which you can connect
-   * `oc apply -f openshift.yaml` will deploy your application
-6. Automate this deployment process by modifying the `cd.yaml` pipeline.
+   * `oc apply -f infra/openshift.yaml` will deploy your application
+7. Automate this deployment process by modifying the `cd.yaml` pipeline.
    * Provide the correct secrets to login to the OpenShift cluster from your repository.
    * Make sure that this pipeline only runs from the dev branch.
    * The token that we used before is only valid for 24 hours, so we usually don't use this for automation but it's OK for this task.
-7. Make a change in the openshift.yaml (update the replicas) and let the pipeline apply the changes.
-8. Validate the changes via the UI or via the CLI.
+8. Make a change in the openshift.yaml (update the replicas) and let the pipeline apply the changes.
+9. Validate the changes via the UI or via the CLI.
 
 ---
 
