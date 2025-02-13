@@ -12,13 +12,17 @@ type Workshop struct {
 	Date         string   `json:"date"`
 	Presentator  string   `json:"presentator"`
 	Participants []string `json:"participants"`
+	SweaterScore int8     `json:"sweaterscore"`
 }
+
+var defaultSweaterScore, _ = strconv.ParseInt(os.Getenv("DEFAULT_SWEATERSCORE"), 10, 8)
 
 var workshop = Workshop{
 	Name:         "ALM Workshop",
 	Date:         "14/02/2025",
 	Presentator:  "AE Consultants",
 	Participants: []string{"John Doe", "Mary Little Lamb", "Chuck Norris"},
+	SweaterScore: int8(defaultSweaterScore),
 }
 
 func getWorkshopHandler(w http.ResponseWriter, r *http.Request) {
@@ -30,6 +34,10 @@ func getWorkshopHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(workshop)
 }
 
+func isValidSweaterScore(score int8) bool {
+	return score >= 1 && score <= 10
+}
+
 func postWorkshopHandler(w http.ResponseWriter, r *http.Request) {
 	// Decode the incoming JSON data into a new Workshop struct
 	var newWorkshop Workshop
@@ -37,6 +45,12 @@ func postWorkshopHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
 		w.Write([]byte("Invalid JSON data"))
+		return
+	}
+
+	if !isValidSweaterScore(newWorkshop.SweaterScore) {
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte("SweaterScore must be between 1 and 10"))
 		return
 	}
 
