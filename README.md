@@ -62,7 +62,7 @@ Now that we have a working development environment, let's move on!
 
 ## Tasks
 
-### **Task 1: Setting Up a CI/CD Pipeline**
+### **Task 1: Setting Up a CI Pipeline**
 #### **Problem Statement**
 Currently, we only have a local development setup. Our goal is to:
 * Work with multiple developers while ensuring **consistent, repeatable builds**.
