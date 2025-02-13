@@ -6,7 +6,7 @@ env: # ADD YOUR ENVIRONMENT VARIABLES HERE
 
 jobs:
   deploy:
-    if:
+    if: # ADD YOUR CONDITION HERE
     environment: development
     runs-on: ubuntu-22.04
     steps:
