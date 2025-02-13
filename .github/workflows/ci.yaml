@@ -1,9 +1,14 @@
 name: Golang Docker Build
 
 on:
+  # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
   push:
     branches:
       - '**'
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
+  release:
+    types:
+      - published
 
 env:
   CONTAINER_REPOSITORY: quay.io/mortierdaan # PUT YOUR OWN USERNAME HERE
