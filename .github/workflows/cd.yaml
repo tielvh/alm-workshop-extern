@@ -1,17 +1,12 @@
 name: Release Application
 
-on:
-  push:
-    branches:
-      - '**'
+on: # ADD YOUR TRIGGER HERE
 
-env:
-  OPENSHIFT_SERVER: 'https://api.rm3.7wse.p1.openshiftapps.com:6443'
-  OPENSHIFT_NAMESPACE: 'mortierdaan-dev'
+env: # ADD YOUR ENVIRONMENT VARIABLES HERE
 
 jobs:
   deploy:
-    if: github.ref == 'refs/heads/dev'
+    if: # ADD YOUR CONDITION HERE
     environment: development
     runs-on: ubuntu-22.04
     steps:
@@ -21,10 +16,10 @@ jobs:
       - name: Login OpenShift
         uses: redhat-actions/oc-login@v1
         with:
-          openshift_server_url: ${{ env.OPENSHIFT_SERVER }}
-          openshift_token: ${{ secrets.OPENSHIFT_TOKEN }}
-          namespace: ${{ env.OPENSHIFT_NAMESPACE }}
+          openshift_server_url: <<TODO>>
+          openshift_token: <<TODO>>
+          namespace: <<TODO>>
 
       - name: Apply Openshift YAML
         run: |
-          kubectl apply -f infra/openshift.yaml -n $OPENSHIFT_NAMESPACE
+          # ADD YOUR COMMANDS HERE
