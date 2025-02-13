@@ -18,7 +18,7 @@ To make things more interesting, we’ll be using technologies that you may not 
 
 ## Workshop Structure
 
-The workshop is divided into several tasks, each serving as a checkpoint. If you get stuck or run out of time, you can always check out the corresponding branch to catch up.
+The workshop is divided into several tasks, each serving as a checkpoint. If you get stuck or run out of time, you can always check out the corresponding solution branch to catch up.
 
 ---
 
@@ -70,13 +70,13 @@ Currently, we only have a local development setup. Our goal is to:
 * Deploy our application publicly in a reliable manner.
 
 #### **Solution Approach**
-We'll set up a **GitHub Actions pipeline** to automate the build and deployment process.
+We'll set up a **GitHub Actions pipeline** to automate the build process.
 
 #### **Steps**
-1. A pre-made **GitHub Actions workflow** file for this part is already present inside `.github/workflows/ci.yaml`.
+1. A pre-configured **GitHub Actions workflow** file is already available in `.github/workflows/ci.yaml` for this task.
 2. Modify the steps to **build** and **push** the container image to [**Quay.io**](https://quay.io/).
 3. Use a [**Robot Account**](https://docs.quay.io/glossary/robot-accounts.html) to authenticate with Quay.io.
-   * **HINT**: The image name should be as such quay.io/<your-username>/alm-workshop to properly push
+   * **HINT**: The image name should be as such `quay.io/<your-username>/alm-workshop` to properly push
    * **HINT**: You might need to register the repository in quay first before you can push.
    * **HINT**: How will you manage your quay Robot User password in the pipeline?
 4. Validate the deployment by pulling the container image and running it locally:
@@ -201,7 +201,7 @@ We'll create a separate **TST branch** and adjust configurations accordingly.
 ## **Congratulations! 🎉**
 You now have a fully functional **CI/CD pipeline**, supporting automated builds, releases, and deployments!
 
-The next step is to now improve upon this, so that you as a developer can focus solely on producing the code. Choose some of the extra tasks to do, in both repositories are different tasks related to their type.
+The next step is to now improve upon this, so that you as a developer can focus solely on producing the code. Choose some of the extra tasks to do.
 
 ### **Extras**
 Try improving your setup with:
