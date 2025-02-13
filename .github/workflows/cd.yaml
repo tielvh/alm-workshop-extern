@@ -22,4 +22,4 @@ jobs:
 
       - name: Apply Openshift YAML
         run: |
-          kubectl apply -f infra/openshift.yaml -n $OPENSHIFT_NAMESPACE
+          # ADD YOUR COMMANDS HERE
