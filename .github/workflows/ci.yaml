@@ -2,8 +2,7 @@ name: Golang Docker Build
 
 on:
   push:
-    branches:
-      - "*"
+    branches: [main]
 
 env:
   CONTAINER_REPOSITORY: quay.io/mortierdaan # PUT YOUR OWN USERNAME HERE
